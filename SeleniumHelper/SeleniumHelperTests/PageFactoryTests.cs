@@ -1,26 +1,38 @@
 ﻿using SeleniumHelper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace SeleniumHelperTests
 {
     public class PageFactoryTests
     {
-        public class BingHomePage : PageObject
+        public class ConcretePageObject : PageObject
         {
 
         }
 
         [Fact]
-        public void Creates_SUTDriver_With_Correct_Base_URL()
+        public void Creates_PageObject_With_Explicit_Base_URL()
         {
-            var BingDriver = PageObjectFactory.Create<BingHomePage>("http://www.bing.com");
+            var BingHomePage = PageObjectFactory.Create<ConcretePageObject>("http://www.bing.com");
 
-            Assert.Equal<string>("http://www.bing.com/", BingDriver.Url.ToString());
+            Assert.Equal<string>("http://www.bing.com/", BingHomePage.Url.ToString());
         }
+
+        [Fact]
+        public void Creates_PageObject_With_Config_Based_Url()
+        {
+            //Since no URL is provided, PageFactory will try to read it from config file
+            var GoogleHomePage = PageObjectFactory.Create<ConcretePageObject>();
+
+            Assert.Equal<string>("http://www.google.com/", GoogleHomePage.Url.ToString());
+        }
+
+        //[Fact]
+        //public void Creates_PageObject_With_WebDriver()
+        //{
+        //    var SUT = PageObjectFactory.Create<ConcretePageObject>();
+
+        //    Assert.NotNull(SUT.WebDriver);
+        //}
     }
 }
