@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OpenQA.Selenium.Firefox;
+using System;
 using System.Configuration;
 
 namespace SeleniumHelper
@@ -12,7 +13,14 @@ namespace SeleniumHelper
 
             configurBaseUrl(product, URL);
 
+            configureWebDriver(product);
+
             return product;
+        }
+
+        private static void configureWebDriver<T>(T product) where T : PageObject, new()
+        {
+            product.WebDriver = new FirefoxDriver();
         }
 
         private static void configurBaseUrl<T>(T product, string url) where T : PageObject, new()

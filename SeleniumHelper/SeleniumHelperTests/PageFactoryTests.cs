@@ -27,12 +27,13 @@ namespace SeleniumHelperTests
             Assert.Equal<string>("http://www.google.com/", GoogleHomePage.Url.ToString());
         }
 
-        //[Fact]
-        //public void Creates_PageObject_With_WebDriver()
-        //{
-        //    var SUT = PageObjectFactory.Create<ConcretePageObject>();
+        [Fact]
+        public void Creates_PageObject_With_WebDriver()
+        {
+            var SUT = PageObjectFactory.Create<ConcretePageObject>();
 
-        //    Assert.NotNull(SUT.WebDriver);
-        //}
+            //Shoul the driver be a lazy property?
+            Assert.NotNull(SUT.WebDriver);
+        }
     }
 }
