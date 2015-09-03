@@ -32,27 +32,27 @@ namespace SeleniumHelperTests
         {
             //Shoul the driver be a lazy property?
             Assert.NotNull(SUT.WebDriver);
-        }      
+        }
 
-        //[Fact]
-        //[Trait("Concern", "WebDriver")]
-        //public void Multiple_PageObjects_Should_Reuse_Same_Browser_Instance()
-        //{
-        //    var AdditionalPageObject = PageObjectFactory.Create<ConcretePageObject>();
+        [Fact]
+        [Trait("Concern", "WebDriver")]
+        public void Multiple_PageObjects_Should_Reuse_Same_Browser_Instance()
+        {
+            var AdditionalPageObject = PageObjectFactory.Create<ConcretePageObject>();
 
-        //    Assert.NotSame(SUT, AdditionalPageObject);
+            Assert.NotSame(SUT, AdditionalPageObject);
 
-        //    try
-        //    {
-        //        //Factory should create additional page objects using the same driver
-        //        Assert.Same(SUT.WebDriver, AdditionalPageObject.WebDriver);
-        //    }
-        //    //Catch assertion failure so we can properly close additional browser.
-        //    catch (SameException se)
-        //    {
-        //        AdditionalPageObject.WebDriver.Quit();
-        //        throw;
-        //    }
-        //}
+            try
+            {
+                //Factory should create additional page objects using the same driver
+                Assert.Same(SUT.WebDriver, AdditionalPageObject.WebDriver);
+            }
+            //Catch assertion failure so we can properly close additional browser.
+            catch (SameException se)
+            {
+                AdditionalPageObject.WebDriver.Quit();
+                throw;
+            }
+        }
     }
 }

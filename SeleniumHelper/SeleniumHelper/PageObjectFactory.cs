@@ -1,12 +1,15 @@
-﻿using OpenQA.Selenium.Firefox;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.PhantomJS;
 using System;
 using System.Configuration;
 
 namespace SeleniumHelper
 {
-    public class PageObjectFactory
+    public static class PageObjectFactory
     {
+        private static IWebDriver WebDriver;
+
         public static T Create<T>(string URL = "") where T : PageObject, new()
         {
             var product = new T();
@@ -20,7 +23,14 @@ namespace SeleniumHelper
 
         private static void configureWebDriver<T>(T product) where T : PageObject, new()
         {
-            product.WebDriver = new PhantomJSDriver();
+            initializeDriver();
+            product.WebDriver = WebDriver;
+        }
+
+        private static void initializeDriver()
+        {
+            if (WebDriver == null)
+                WebDriver = new PhantomJSDriver();
         }
 
         private static void configurBaseUrl<T>(T product, string url) where T : PageObject, new()
