@@ -13,13 +13,30 @@ namespace SeleniumHelperTests
     /// </summary>
     public class PFWebDriverConfigurationTests
     {
+        PageObject SUT;
+
+        public PFWebDriverConfigurationTests()
+        {
+            SUT = PageObjectFactory.Create<ConcretePageObject>();
+        }
+
         [Fact]
+        [Trait("Concern", "WebDriver")]
         public void Creates_PageObject_With_WebDriver()
         {
-            var SUT = PageObjectFactory.Create<ConcretePageObject>();
-
             //Shoul the driver be a lazy property?
             Assert.NotNull(SUT.WebDriver);
         }
+
+        //[Fact]
+        //[Trait("Concern", "WebDriver")]
+        //public void Multiple_PageObjects_Should_Reuse_Same_Browser_Instance()
+        //{
+        //    var AdditionalPageObject = PageObjectFactory.Create<ConcretePageObject>();
+
+        //    Assert.NotSame(SUT, AdditionalPageObject);
+        //    //Factory should create additional page objects using the same driver
+        //    Assert.Same(SUT.WebDriver, AdditionalPageObject.WebDriver);
+        //}
     }
 }

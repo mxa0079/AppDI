@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.PhantomJS;
 using System;
 using System.Configuration;
 
@@ -19,7 +20,7 @@ namespace SeleniumHelper
 
         private static void configureWebDriver<T>(T product) where T : PageObject, new()
         {
-            product.WebDriver = new FirefoxDriver();
+            product.WebDriver = new PhantomJSDriver();
         }
 
         private static void configurBaseUrl<T>(T product, string url) where T : PageObject, new()
