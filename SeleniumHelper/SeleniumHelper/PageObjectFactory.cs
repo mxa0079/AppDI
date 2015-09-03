@@ -6,7 +6,6 @@ namespace SeleniumHelper
 {
     public class PageObjectFactory
     {
-
         public static T Create<T>(string URL = "") where T : PageObject, new()
         {
             var product = new T();

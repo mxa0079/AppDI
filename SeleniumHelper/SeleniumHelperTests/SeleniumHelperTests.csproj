@@ -73,8 +73,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="PageFactoryTests.cs" />
+    <Compile Include="ConcretePageObject.cs" />
+    <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PFWebDriverConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

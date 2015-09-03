@@ -3,12 +3,11 @@ using Xunit;
 
 namespace SeleniumHelperTests
 {
-    public class PageFactoryTests
+    /// <summary>
+    /// Holds all tests related to base url configuration
+    /// </summary>
+    public class PFUrlConfigurationTests
     {
-        public class ConcretePageObject : PageObject
-        {
-
-        }
 
         [Fact]
         public void Creates_PageObject_With_Explicit_Base_URL()
@@ -25,15 +24,6 @@ namespace SeleniumHelperTests
             var GoogleHomePage = PageObjectFactory.Create<ConcretePageObject>();
 
             Assert.Equal<string>("http://www.google.com/", GoogleHomePage.Url.ToString());
-        }
-
-        [Fact]
-        public void Creates_PageObject_With_WebDriver()
-        {
-            var SUT = PageObjectFactory.Create<ConcretePageObject>();
-
-            //Shoul the driver be a lazy property?
-            Assert.NotNull(SUT.WebDriver);
         }
     }
 }
