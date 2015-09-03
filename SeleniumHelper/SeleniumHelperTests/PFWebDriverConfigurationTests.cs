@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Sdk;
 
 namespace SeleniumHelperTests
 {
     /// <summary>
     /// Holds all the tests related to WebDriver configuration
     /// </summary>
-    public class PFWebDriverConfigurationTests
+    public class PFWebDriverConfigurationTests : IDisposable
     {
         PageObject SUT;
 
@@ -20,13 +21,18 @@ namespace SeleniumHelperTests
             SUT = PageObjectFactory.Create<ConcretePageObject>();
         }
 
+        public void Dispose()
+        {
+            SUT.WebDriver.Quit();
+        }
+
         [Fact]
         [Trait("Concern", "WebDriver")]
         public void Creates_PageObject_With_WebDriver()
         {
             //Shoul the driver be a lazy property?
             Assert.NotNull(SUT.WebDriver);
-        }
+        }      
 
         //[Fact]
         //[Trait("Concern", "WebDriver")]
@@ -35,8 +41,18 @@ namespace SeleniumHelperTests
         //    var AdditionalPageObject = PageObjectFactory.Create<ConcretePageObject>();
 
         //    Assert.NotSame(SUT, AdditionalPageObject);
-        //    //Factory should create additional page objects using the same driver
-        //    Assert.Same(SUT.WebDriver, AdditionalPageObject.WebDriver);
+
+        //    try
+        //    {
+        //        //Factory should create additional page objects using the same driver
+        //        Assert.Same(SUT.WebDriver, AdditionalPageObject.WebDriver);
+        //    }
+        //    //Catch assertion failure so we can properly close additional browser.
+        //    catch (SameException se)
+        //    {
+        //        AdditionalPageObject.WebDriver.Quit();
+        //        throw;
+        //    }
         //}
     }
 }
