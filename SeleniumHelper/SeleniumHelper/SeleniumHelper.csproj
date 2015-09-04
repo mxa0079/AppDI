@@ -52,6 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppDriver.cs" />
+    <Compile Include="AppDriverFabric.cs" />
+    <Compile Include="MissingConfigurationException.cs" />
     <Compile Include="PageObjectFactory.cs" />
     <Compile Include="PageObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

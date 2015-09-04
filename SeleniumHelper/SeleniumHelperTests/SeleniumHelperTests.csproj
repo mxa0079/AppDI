@@ -73,6 +73,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AppDriverFabricTests\AppDriverFabricConfiguration.cs" />
     <Compile Include="ConcretePageObject.cs" />
     <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="xunit.runner.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
