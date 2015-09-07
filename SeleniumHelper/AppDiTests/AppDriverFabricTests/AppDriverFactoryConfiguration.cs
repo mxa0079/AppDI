@@ -1,10 +1,10 @@
 ﻿using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.PhantomJS;
-using SeleniumHelper;
+using AppDi;
 using System;
 using Xunit;
 
-namespace SeleniumHelperTests.AppDriverFactoryTests
+namespace AppDiTests.AppDriverFactoryTests
 {
     public class AppDriverFactoryConfiguration
     {

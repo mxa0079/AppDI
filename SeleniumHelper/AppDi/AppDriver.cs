@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
 
-namespace SeleniumHelper
+namespace AppDi
 {
     public class AppDriver
     {

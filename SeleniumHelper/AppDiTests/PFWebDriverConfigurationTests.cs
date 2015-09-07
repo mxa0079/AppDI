@@ -1,4 +1,4 @@
-﻿using SeleniumHelper;
+﻿using AppDi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xunit;
 using Xunit.Sdk;
 
-namespace SeleniumHelperTests
+namespace AppDiTests
 {
     /// <summary>
     /// Holds all the tests related to WebDriver configuration

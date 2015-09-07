@@ -3,14 +3,14 @@ using OpenQA.Selenium.PhantomJS;
 using OpenQA.Selenium;
 using System.IO;
 using Newtonsoft.Json;
-using SeleniumHelper.Configuration;
+using AppDi.Configuration;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using System.Reflection;
 
-namespace SeleniumHelper    
+namespace AppDi    
 {
     public class AppDriverFactory
     {

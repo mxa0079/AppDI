@@ -1,6 +1,6 @@
-﻿using SeleniumHelper;
+﻿using AppDi;
 
-namespace SeleniumHelperTests
+namespace AppDiTests
 {
     /// <summary>
     /// A vanilla helper class to enable unit testing.

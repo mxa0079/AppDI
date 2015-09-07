@@ -1,8 +1,8 @@
-﻿using SeleniumHelper;
+﻿using AppDi;
 using System;
 using Xunit;
 
-namespace SeleniumHelperTests
+namespace AppDiTests
 {
     /// <summary>
     /// Holds all tests related to base url configuration

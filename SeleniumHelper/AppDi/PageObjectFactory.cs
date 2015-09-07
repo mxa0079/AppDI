@@ -4,7 +4,7 @@ using OpenQA.Selenium.PhantomJS;
 using System;
 using System.Configuration;
 
-namespace SeleniumHelper
+namespace AppDi
 {
     public static class PageObjectFactory
     {

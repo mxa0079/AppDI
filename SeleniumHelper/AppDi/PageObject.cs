@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace SeleniumHelper
+namespace AppDi
 {
     public abstract class PageObject
     {

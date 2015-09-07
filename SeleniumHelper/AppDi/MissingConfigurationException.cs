@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SeleniumHelper
+namespace AppDi
 {
     public class MissingConfigurationException : System.Exception
     {

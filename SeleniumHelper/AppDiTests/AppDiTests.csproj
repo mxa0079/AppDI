@@ -8,8 +8,8 @@
     <ProjectGuid>{F86ED3B7-4BE9-46FA-A74F-D540C3BEA044}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SeleniumHelperTests</RootNamespace>
-    <AssemblyName>SeleniumHelperTests</AssemblyName>
+    <RootNamespace>AppDiTests</RootNamespace>
+    <AssemblyName>AppDiTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -88,9 +88,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SeleniumHelper\SeleniumHelper.csproj">
+    <ProjectReference Include="..\AppDi\AppDi.csproj">
       <Project>{74E18460-6CAC-403B-B20E-B4967F67B9D7}</Project>
-      <Name>SeleniumHelper</Name>
+      <Name>AppDi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
