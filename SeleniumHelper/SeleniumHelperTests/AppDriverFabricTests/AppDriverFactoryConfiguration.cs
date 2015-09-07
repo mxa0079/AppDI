@@ -3,29 +3,29 @@ using SeleniumHelper;
 using System;
 using Xunit;
 
-namespace SeleniumHelperTests.AppDriverFabricTests
+namespace SeleniumHelperTests.AppDriverFactoryTests
 {
-    public class AppDriverFabricConfiguration
+    public class AppDriverFactoryConfiguration
     {
-        private AppDriverFabric SUT;
+        private AppDriverFactory SUT;
 
         private readonly string DESIRED_URL = "http://www.bing.com/";
 
 
-        public AppDriverFabricConfiguration()
+        public AppDriverFactoryConfiguration()
         {
-            SUT = new AppDriverFabric();
+            SUT = new AppDriverFactory();
         }
 
         [Fact]
-        [Trait("SUT", "AppDriverFabric")]
+        [Trait("SUT", "AppDriverFactory")]
         public void Creating_App_Driver_With_No_Config_Throws_Exception()
         {
             Assert.Throws<MissingConfigurationException>(() => SUT.Create());
         }
 
         [Fact]
-        [Trait("SUT", "AppDriverFabric")]
+        [Trait("SUT", "AppDriverFactory")]
         public void Create_App_Driver_With_Explicit_URL()
         {
             AppDriver result = SUT.Driving(DESIRED_URL).Create();
@@ -35,15 +35,14 @@ namespace SeleniumHelperTests.AppDriverFabricTests
         }
 
         [Fact]
-        [Trait("SUT", "AppDriverFabric")]
-        public void Creates_App_Driver_With_Correct_Base_Config()
+        [Trait("SUT", "AppDriverFactory")]
+        public void Creates_AppDriver_specifying_baseURL_fisrt_and_then_Browser()
         {
-            AppDriverFabric sut = new AppDriverFabric();
-
-            AppDriver result = sut.Driving(DESIRED_URL).Using<PhantomJSDriver>().Create();
+            //set base url first, browser second
+            AppDriver result = SUT.Driving(DESIRED_URL).Using<PhantomJSDriver>().Create();
 
             Assert.NotNull(result.WebDriver);
-            
+            Assert.Same(DESIRED_URL, result.BaseUrl.ToString());
             //Initially, I had the assertion below. But this is redundant.
             //My code is not in charge of selecting the correct IWebDriver, I use generics for that
             //I should let the .net take care of testing that part
@@ -51,6 +50,17 @@ namespace SeleniumHelperTests.AppDriverFabricTests
             //Assert.IsType<Lazy<PhantomJSDriver>>(result.WebDriver);
             //It also resulted in some nasty cleanup code:
             //result.WebDriver.Value.Quit();
+        }
+
+        [Fact]
+        [Trait("SUT", "AppDriverFactory")]
+        public void Creates_AppDriver_specifying_browser_first_and_then_baseURL()
+        {
+            //select browser first, set base url second
+            AppDriver result = SUT.Using<PhantomJSDriver>().Driving(DESIRED_URL).Create();
+
+            Assert.NotNull(result.WebDriver);
+            Assert.Same(DESIRED_URL, result.BaseUrl.ToString());
         }
     }
 }

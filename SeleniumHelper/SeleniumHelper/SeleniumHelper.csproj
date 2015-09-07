@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppDriver.cs" />
-    <Compile Include="AppDriverFabric.cs" />
+    <Compile Include="AppDriverFactory.cs" />
     <Compile Include="MissingConfigurationException.cs" />
     <Compile Include="PageObjectFactory.cs" />
     <Compile Include="PageObject.cs" />

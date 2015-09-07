@@ -4,19 +4,27 @@ using OpenQA.Selenium;
 
 namespace SeleniumHelper
 {
-    public class AppDriverFabric
+    public class AppDriverFactory
     {
         private Uri _baseUrl;
         Lazy<IWebDriver> _webDriver;
 
-        public AppDriverFabric()
+        public AppDriverFactory()
         {
 
         }
 
-        public AppDriverFabric(AppDriverFabric SourceappDriverFabric)
+        public AppDriverFactory(AppDriverFactory sourceAppDriverFactory)
         {
-            this._baseUrl = SourceappDriverFabric._baseUrl;
+            if(sourceAppDriverFactory._baseUrl != null)
+            {
+                this._baseUrl = sourceAppDriverFactory._baseUrl;
+            }
+
+            if(sourceAppDriverFactory._webDriver != null)
+            {
+                this._webDriver = sourceAppDriverFactory._webDriver;
+            }
         }
 
         public AppDriver Create()
@@ -29,17 +37,17 @@ namespace SeleniumHelper
             return new AppDriver(_baseUrl, _webDriver);
         }
 
-        public AppDriverFabric Using<T>() where T : IWebDriver, new()
+        public AppDriverFactory Using<T>() where T : IWebDriver, new()
         {
             //Could not directly create a Lazy<T>, e.g. I could not directly convert Lazy<IEDriver> to Lazy<IWebDriver>
             //More here: http://stackoverflow.com/questions/4479334/casting-interface-type-in-lazyt
-            return new AppDriverFabric(this) {_webDriver = new Lazy<IWebDriver>(() => new T())};
+            return new AppDriverFactory(this) {_webDriver = new Lazy<IWebDriver>(() => new T())};
         }
 
-        public AppDriverFabric Driving(string url)
+        public AppDriverFactory Driving(string url)
         {
             var Url = new Uri(url);
-            return new AppDriverFabric(this) { _baseUrl = Url};
+            return new AppDriverFactory(this) { _baseUrl = Url};
         }
     }
 }

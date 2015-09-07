@@ -73,7 +73,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AppDriverFabricTests\AppDriverFabricConfiguration.cs" />
+    <Compile Include="AppDriverFabricTests\AppDriverFactoryConfiguration.cs" />
     <Compile Include="ConcretePageObject.cs" />
     <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
