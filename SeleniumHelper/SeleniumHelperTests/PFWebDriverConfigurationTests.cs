@@ -27,7 +27,7 @@ namespace SeleniumHelperTests
         }
 
         [Fact]
-        [Trait("Concern", "WebDriver")]
+        [Trait("SUT", "PageObjectFactory")]
         public void Creates_PageObject_With_WebDriver()
         {
             //Shoul the driver be a lazy property?
@@ -35,7 +35,7 @@ namespace SeleniumHelperTests
         }
 
         [Fact]
-        [Trait("Concern", "WebDriver")]
+        [Trait("SUT", "PageObjectFactory")]
         public void Multiple_PageObjects_Should_Reuse_Same_Browser_Instance()
         {
             var AdditionalPageObject = PageObjectFactory.Create<ConcretePageObject>();
