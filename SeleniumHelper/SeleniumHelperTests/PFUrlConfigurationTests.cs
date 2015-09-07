@@ -1,4 +1,5 @@
 ﻿using SeleniumHelper;
+using System;
 using Xunit;
 
 namespace SeleniumHelperTests
@@ -6,24 +7,31 @@ namespace SeleniumHelperTests
     /// <summary>
     /// Holds all tests related to base url configuration
     /// </summary>
-    public class PFUrlConfigurationTests
+    public class PFUrlConfigurationTests : IDisposable
     {
+        ConcretePageObject FactoryResult = null;
 
         [Fact]
         public void Creates_PageObject_With_Explicit_Base_URL()
         {
-            var BingHomePage = PageObjectFactory.Create<ConcretePageObject>("http://www.bing.com");
+            FactoryResult = PageObjectFactory.Create<ConcretePageObject>("http://www.bing.com");
 
-            Assert.Equal<string>("http://www.bing.com/", BingHomePage.Url.ToString());
+            Assert.Equal<string>("http://www.bing.com/", FactoryResult.Url.ToString());
         }
 
         [Fact]
         public void Creates_PageObject_With_Config_Based_Url()
         {
             //Since no URL is provided, PageFactory will try to read it from config file
-            var GoogleHomePage = PageObjectFactory.Create<ConcretePageObject>();
+            FactoryResult = PageObjectFactory.Create<ConcretePageObject>();
 
-            Assert.Equal<string>("http://www.google.com/", GoogleHomePage.Url.ToString());
+            Assert.Equal<string>("http://www.google.com/", FactoryResult.Url.ToString());
+        }
+
+        public void Dispose()
+        {
+            if(FactoryResult != null)
+                FactoryResult.WebDriver.Quit();
         }
     }
 }
