@@ -9,6 +9,8 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Edge;
 using System.Reflection;
+using System.Dynamic;
+using System.Collections.Generic;
 
 namespace AppDi    
 {
@@ -16,6 +18,29 @@ namespace AppDi
     {
         private const string JsonConfigFileName = "appdi.config.json";
         private AppFabricConfig _jsonconfig;
+
+        private Dictionary<string, Type> _pages = new Dictionary<string, Type>();
+
+        public AppDriverFactory Register<T>() where T : PageObject
+        {
+            var pageType = typeof(T);
+            _pages.Add(cleanPageObjectsuffix(pageType.Name), pageType);
+            return this;
+        }
+
+        private string cleanPageObjectsuffix(string pageObjectName)
+        {
+            const string suffix = "PageObject";
+
+            if (pageObjectName.EndsWith(suffix))
+            {
+                return pageObjectName.Substring(0, pageObjectName.Length - suffix.Length);
+            }
+            else
+            {
+                return pageObjectName;
+            }
+        }
 
         private Uri _baseUrl;
         Lazy<IWebDriver> _webDriver;
@@ -59,7 +84,7 @@ namespace AppDi
             }
             
 
-            return new AppDriver(_baseUrl, _webDriver);
+            return new AppDriver(_baseUrl, _webDriver, _pages);
         }
 
         private AppFabricConfig loadJsonConfiguration()
