@@ -43,14 +43,21 @@ namespace AppDi
             
             _jsonconfig = loadJsonConfiguration();
 
-            this._baseUrl = this._baseUrl ?? new Uri(_jsonconfig.BaseUrl);
-                
-            this._webDriver = this._webDriver ?? extractDriverConfig(_jsonconfig.Browser);
-
-            if(_baseUrl == null)
+            if(_jsonconfig != null)
             {
-                throw new MissingConfigurationException("The App Driver has not been properly configured. Missing BaseUrl. you can configure one by calling the \"Driving()\" method of the AppDriverFactory or by creating an appdi.config.json file at the root of your project.");
+                this._baseUrl = this._baseUrl ?? new Uri(_jsonconfig.BaseUrl);
+                this._webDriver = this._webDriver ?? extractDriverConfig(_jsonconfig.Browser);
             }
+            else
+            {
+                if (_baseUrl == null)
+                {
+                    throw new MissingConfigurationException("The App Driver has not been properly configured. Missing BaseUrl. you can configure one by calling the \"Driving()\" method of the AppDriverFactory or by creating an appdi.config.json file at the root of your project.");
+                }
+
+                this._webDriver = new Lazy<IWebDriver>(() => new FirefoxDriver());
+            }
+            
 
             return new AppDriver(_baseUrl, _webDriver);
         }

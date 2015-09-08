@@ -1,11 +1,10 @@
-﻿using OpenQA.Selenium.Edge;
-using OpenQA.Selenium.PhantomJS;
-using AppDi;
-using System;
-using Xunit;
-
-namespace AppDiTests.AppDriverFactoryTests
+﻿namespace AppDiTests.AppDriverFactoryTests
 {
+    using Microsoft.QualityTools.Testing.Fakes;
+    using OpenQA.Selenium.PhantomJS;
+    using AppDi;
+    using Xunit;
+
     public class AppDriverFactoryConfiguration
     {
         private AppDriverFactory SUT;
@@ -18,14 +17,20 @@ namespace AppDiTests.AppDriverFactoryTests
             SUT = new AppDriverFactory();
         }
 
-        //Temporarily commenting out. Need to find a way to prevent the Factory from using the 
-        //Json configuration so this exception will be thrown
-        //[Fact]
-        //[Trait("SUT", "AppDriverFactory")]
-        //public void Creating_App_Driver_With_No_Config_Throws_Exception()
-        //{
-        //    Assert.Throws<MissingConfigurationException>(() => SUT.Create());
-        //}
+        [Fact]
+        [Trait("SUT", "AppDriverFactory")]
+        public void Creating_App_Driver_With_No_Config_Throws_Exception()
+        {
+            //Using shims to pretend we do not have a json config file
+            using (ShimsContext.Create())
+            {
+                System.IO.Fakes.ShimFile.ExistsString = (s) =>
+                {
+                    return false;
+                };
+                Assert.Throws<MissingConfigurationException>(() => SUT.Create());
+            }
+        }
 
         [Fact]
         [Trait("SUT", "AppDriverFactory")]
