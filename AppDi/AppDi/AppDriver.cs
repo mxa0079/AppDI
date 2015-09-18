@@ -12,7 +12,15 @@ namespace AppDi
 
         private Dictionary<string, Type> _pageObjects;
 
-        public AppDriver(Uri baseUrl, Lazy<IWebDriver> webDriver, Dictionary<string, Type> PageObjectmembers)
+        public static AppDriverFactory Factory()
+        {
+            return new AppDriverFactory((Uri baseUrl, Lazy<IWebDriver> webDriver, Dictionary<string, Type> PageObjectmembers) =>
+            {
+                return new AppDriver(baseUrl, webDriver, PageObjectmembers);
+            });
+        }
+
+        private AppDriver(Uri baseUrl, Lazy<IWebDriver> webDriver, Dictionary<string, Type> PageObjectmembers)
         {
             this.BaseUrl = baseUrl;
             this.WebDriver = webDriver;

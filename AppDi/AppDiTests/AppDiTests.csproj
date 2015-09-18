@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="AppDriverFabricTests\AppDriverFactory-PageObjectRegistration.cs" />
     <Compile Include="AppDriverFabricTests\AppDriverFactoryConfiguration.cs" />
+    <Compile Include="AppDriverTests\AppDriverTests.cs" />
     <Compile Include="ConcretePageObject.cs" />
     <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +116,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

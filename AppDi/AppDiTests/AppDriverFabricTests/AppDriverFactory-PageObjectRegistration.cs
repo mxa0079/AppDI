@@ -10,7 +10,7 @@
 
         public AppDriverFactory_PageObjectRegistration()
         {
-            SUT = new AppDriverFactory();
+            SUT = AppDriver.Factory();
         }
 
         [Fact]

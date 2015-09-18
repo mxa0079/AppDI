@@ -44,14 +44,19 @@ namespace AppDi
 
         private Uri _baseUrl;
         Lazy<IWebDriver> _webDriver;
+        Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> AppDriverConstructor;
 
-        public AppDriverFactory()
+        public AppDriverFactory(Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> func)
         {
-
+            AppDriverConstructor = func;
         }
 
+        //TODO: Not a big fan of this approach. Feels too brute force.
+        //Since every time I add a new property to the Factory, I need to update this cloning code. Granted... AppDriverFactory should seldomly change
         public AppDriverFactory(AppDriverFactory sourceAppDriverFactory)
         {
+            AppDriverConstructor = sourceAppDriverFactory.AppDriverConstructor;
+
             if(sourceAppDriverFactory._baseUrl != null)
             {
                 this._baseUrl = sourceAppDriverFactory._baseUrl;
@@ -82,9 +87,9 @@ namespace AppDi
 
                 this._webDriver = new Lazy<IWebDriver>(() => new FirefoxDriver());
             }
-            
 
-            return new AppDriver(_baseUrl, _webDriver, _pages);
+            //Replace with this: http://stackoverflow.com/questions/515269/factory-pattern-in-c-how-to-ensure-an-object-instance-can-only-be-created-by-a
+            return AppDriverConstructor(_baseUrl, _webDriver, _pages);
         }
 
         private AppFabricConfig loadJsonConfiguration()

@@ -14,7 +14,7 @@
 
         public AppDriverFactoryConfiguration()
         {
-            SUT = new AppDriverFactory();
+            SUT = AppDriver.Factory();
         }
 
         [Fact]
