@@ -12,6 +12,10 @@ namespace AppDi
 
         private Dictionary<string, Type> _pageObjects;
 
+        /// <summary>
+        /// The AppDriverFactory is responsible for creating an instance of an AppDriver
+        /// </summary>
+        /// <returns></returns>
         public static AppDriverFactory Factory()
         {
             return new AppDriverFactory((Uri baseUrl, Lazy<IWebDriver> webDriver, Dictionary<string, Type> PageObjectmembers) =>
@@ -20,6 +24,12 @@ namespace AppDi
             });
         }
 
+        /// <summary>
+        /// AppDriver should only be instantiated through its factory
+        /// </summary>
+        /// <param name="baseUrl"></param>
+        /// <param name="webDriver"></param>
+        /// <param name="PageObjectmembers"></param>
         private AppDriver(Uri baseUrl, Lazy<IWebDriver> webDriver, Dictionary<string, Type> PageObjectmembers)
         {
             this.BaseUrl = baseUrl;

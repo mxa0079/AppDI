@@ -46,7 +46,13 @@ namespace AppDi
         Lazy<IWebDriver> _webDriver;
         Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> AppDriverConstructor;
 
-        public AppDriverFactory(Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> func)
+        /// <summary>
+        /// AppDriverFactory should only be instantiated through the AppDriver.Factory() method
+        /// </summary>
+        /// <param name="func">
+        /// Func is responsible for creating an instannce of AppDriver. We made the constructor of AppDriver private to ensure it is only created through its factory.
+        /// </param>
+        internal AppDriverFactory(Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> func)
         {
             AppDriverConstructor = func;
         }

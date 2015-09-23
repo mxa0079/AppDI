@@ -1,6 +1,7 @@
 ﻿namespace AppDiTests.AppDriverFabricTests
 {
     using AppDi;
+    using System.Diagnostics;
     using System.Dynamic;
     using Xunit;
 
@@ -15,7 +16,7 @@
 
         [Fact]
         [Trait("SUT", "AppDriverFactory")]
-        public void Of_an_object_not_derived_from_PageObject_Throws()
+        public void Using_Dynamic_AppDriver_Allows_PageObject_Registration()
         {
             const string JSON_CONFIG_URL = @"http://www.google.com/";
 
