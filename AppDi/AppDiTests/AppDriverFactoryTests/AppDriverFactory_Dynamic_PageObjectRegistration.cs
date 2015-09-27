@@ -25,8 +25,6 @@
             //Register a Page Object with our app driver
             dynamic driver = SUT.Register<ConcretePageObject>().Create();
 
-            driver.Concrete.IncreaseServiceCallCounterByOne();
-
             //Ensure we have access to the dynamic page object we just registered
             //And that it was created as expected
             Assert.Equal(JSON_CONFIG_URL, driver.Concrete.Url.ToString());

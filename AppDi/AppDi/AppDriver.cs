@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -53,7 +54,9 @@ namespace AppDi
             if (isPageRegistered)
             {
                 var createdPage = (PageObject)Activator.CreateInstance(pageType);
+                createdPage.WebDriver = this.WebDriver.Value;
                 createdPage.Url = this.BaseUrl;
+                PageFactory.InitElements(this.WebDriver.Value, createdPage);
                 result = createdPage;
                 return isPageRegistered;
             }
