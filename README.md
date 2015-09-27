@@ -15,7 +15,7 @@ AppDi allows you to write a test like this:
 ```csharp
         //Simple case using the framework end to end
         [Fact]
-        public void PerformSimpleBingUITest()
+        public void PerformBingSearch()
         {
             //Create a driver to interact with bing.com
             dynamic BingDriver = AppDriver.Factory()
