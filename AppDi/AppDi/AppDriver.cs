@@ -37,6 +37,14 @@ namespace AppDi
             _pageObjects = new Dictionary<string, Type>(PageObjectmembers);
         }
 
+        /// <summary>
+        /// This method is in charge of dynamic binding of properties/methods in this Dynamic Object
+        /// In specific for this class, it is in charge of creating instances of Page Objects that are dinamically
+        /// registered with the AppDriver during the initial driver creation (using AppDriver.Factory().Register<> method)
+        /// </summary>
+        /// <param name="binder">Information about the member we are trying to bing</param>
+        /// <param name="result">Newly created PageObject</param>
+        /// <returns></returns>
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             Type pageType;
