@@ -12,7 +12,7 @@ AppDi is a .NET library designed to:
 
 AppDi allows you to write a test like this:
 
-```
+```csharp
         //Simple case using the framework end to end
         [Fact]
         public void PerformSimpleBingUITest()
@@ -31,7 +31,7 @@ AppDi allows you to write a test like this:
 
 Given that you have a PageObject like this:
 
-```
+```csharp
         //The parent PageObject is provided by the AppDi framework
         public class BingHomePageObject : PageObject
         {
