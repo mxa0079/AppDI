@@ -83,7 +83,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AppDriverFabricTests\AppDriverFactory-PageObjectRegistration.cs" />
+    <Compile Include="AppDriverFabricTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs" />
     <Compile Include="AppDriverFabricTests\AppDriverFactoryConfiguration.cs" />
     <Compile Include="AppDriverTests\AppDriverTests.cs" />
     <Compile Include="ConcretePageObject.cs" />
