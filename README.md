@@ -27,6 +27,8 @@ AppDi allows you to write a test like this:
                                           .Create();
             
             //BingHome property (pageobject) was dinamycally registered with our driver
+            //Convention for dynamic properties is to use 'PageObject' suffix, which is removed from actual property name
+            //e.g. A class named BingHomePageObject will be registed with the AppDriver as BingHome
             BingDriver.BingHome.Load().Search("Denali");
         }
 ```
