@@ -28,7 +28,10 @@
                 {
                     return false;
                 };
-                Assert.Throws<MissingConfigurationException>(() => SUT.Create());
+
+                //Since we do not have an appdi.config.json file on the project, and we are not providing a browser
+                //or a url, then AppDriver.Factory().Create() fails
+                Assert.Throws<MissingConfigurationException>(() => AppDriver.Factory().Create());
             }
         }
 
@@ -77,6 +80,7 @@
         {
             const string JSON_CONFIG_BASE_URL = @"http://www.google.com/";
 
+            //The AppDriver factory looks for an appdi.config.json file on the project root, if found it uses those values as defaults
             AppDriver result = SUT.Create();
 
             Assert.NotNull(result.WebDriver);
