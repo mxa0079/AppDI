@@ -1,6 +1,7 @@
 ﻿namespace AppDiTests.AppDriverFabricTests
 {
     using AppDi;
+    using OpenQA.Selenium.PhantomJS;
     using System.Diagnostics;
     using System.Dynamic;
     using Xunit;
@@ -23,11 +24,15 @@
             const string JSON_CONFIG_URL = @"http://www.google.com/";
 
             //Register a Page Object with our app driver
-            dynamic driver = SUT.Register<ConcretePageObject>().Create();
+            dynamic driver = SUT.Using<PhantomJSDriver>().Register<ConcretePageObject>().Create();
+
+            var pageObjectUrl = driver.Concrete.Url.ToString();
+
+            driver.WebDriver.Value.Quit();
 
             //Ensure we have access to the dynamic page object we just registered
             //And that it was created as expected
-            Assert.Equal(JSON_CONFIG_URL, driver.Concrete.Url.ToString());
+            Assert.Equal(JSON_CONFIG_URL, pageObjectUrl);
 
         }
 
