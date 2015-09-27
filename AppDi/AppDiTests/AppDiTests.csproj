@@ -91,9 +91,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AppDriverFabricTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs" />
-    <Compile Include="AppDriverFabricTests\AppDriverFactoryConfiguration.cs" />
-    <Compile Include="AppDriverTests\AppDriverTests.cs" />
+    <Compile Include="AppDriverFactoryTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs" />
+    <Compile Include="AppDriverFactoryTests\AppDriverFactoryConfiguration.cs" />
+    <Compile Include="AcceptanceTests\AppDriverTests.cs" />
     <Compile Include="ConcretePageObject.cs" />
     <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
