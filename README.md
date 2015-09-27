@@ -1,3 +1,5 @@
+![Build Badge Placeholder](https://mavil.visualstudio.com/DefaultCollection/_apis/public/build/definitions/19319cdc-2a49-457c-bb5a-3f377d03af28/6/badge "Build Status")
+
 # AppDi Description
 
 Write maintainable Selenium tests, fast.
@@ -58,9 +60,6 @@ Given that you have a PageObject like this:
 Highlights from this example:
 
 * AppDi allows you to start using Selenium's [PageObject Model] (https://code.google.com/p/selenium/wiki/PageObjects) without any boiler plate code.
-* You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for classes whose only purpose is to expose a set of properties containing page objects
+* You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for classes whose only purpose is to expose a set of properties containing page objects.
 
-
-
-![Build Badge Placeholder](https://mavil.visualstudio.com/DefaultCollection/_apis/public/build/definitions/19319cdc-2a49-457c-bb5a-3f377d03af28/6/badge "Build Status")
 
