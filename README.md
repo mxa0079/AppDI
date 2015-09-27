@@ -58,7 +58,7 @@ Given that you have a PageObject like this:
 Highlights from this example:
 
 * AppDi allows you to start using Selenium's [PageObject Model] (https://code.google.com/p/selenium/wiki/PageObjects) without any boiler plate code.
-* You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for boiler drivers whose only purpose is to expose a number of page object propertis
+* You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for classes whose only purpose is to expose a set of properties containing page objects
 
 
 
