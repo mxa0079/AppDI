@@ -14,8 +14,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDi", "AppDi\AppDi.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppDiTests", "AppDiTests\AppDiTests.csproj", "{F86ED3B7-4BE9-46FA-A74F-D540C3BEA044}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "AppDiPackage", "AppDiPackage\AppDiPackage.nuproj", "{4B361DCF-4AED-4237-B345-41A94AEA732C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,10 +28,6 @@ Global
 		{F86ED3B7-4BE9-46FA-A74F-D540C3BEA044}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F86ED3B7-4BE9-46FA-A74F-D540C3BEA044}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F86ED3B7-4BE9-46FA-A74F-D540C3BEA044}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B361DCF-4AED-4237-B345-41A94AEA732C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B361DCF-4AED-4237-B345-41A94AEA732C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B361DCF-4AED-4237-B345-41A94AEA732C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B361DCF-4AED-4237-B345-41A94AEA732C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
