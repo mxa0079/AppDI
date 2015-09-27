@@ -17,14 +17,14 @@ AppDi allows you to write a test like this:
         [Fact]
         public void PerformSimpleBingUITest()
         {
-            //Create a driver to drive the website
+            //Create a driver to interact with bing.com
             dynamic BingDriver = AppDriver.Factory()
                                           .Using<PhantomJSDriver>()
                                           .Driving("http://www.bing.com")
                                           .Register<BingHomePageObject>()
                                           .Create();
             
-            //Access to the BingHomePageObject that was dinamycally registed with our driver
+            //BingHome property (pageobject) was dinamycally registed with our driver
             BingDriver.BingHome.Load().Search("Denali");
         }
 ```
