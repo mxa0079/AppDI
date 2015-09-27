@@ -24,7 +24,7 @@ AppDi allows you to write a test like this:
                                           .Register<BingHomePageObject>()
                                           .Create();
             
-            //BingHome property (pageobject) was dinamycally registed with our driver
+            //BingHome property (pageobject) was dinamycally registered with our driver
             BingDriver.BingHome.Load().Search("Denali");
         }
 ```
