@@ -17,7 +17,7 @@
 
         [Fact]
         [Trait("SUT", "AppDriverFactory")]
-        public void Works_Reistering_A_Single_Page_At_A_time()
+        public void Works_Registering_A_Single_Page_At_A_time()
         {
             //This is the URL configured on appdi.config.json and hence it should be the URL value of our Concrete page object
             //See test "Creates_AppDriver_taking_defaults_from_JSON_config()" for details

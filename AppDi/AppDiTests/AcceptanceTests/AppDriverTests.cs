@@ -40,6 +40,7 @@ namespace AppDiTests.AppDriverTests
         //Simple case using the framework end to end
         [Fact]
         [Trait("SUT", "AppDriver")]
+        [Trait("Type", "UAT")]
         public void PerformSimpleBingUITest()
         {
             dynamic BingDriver = AppDriver.Factory()
