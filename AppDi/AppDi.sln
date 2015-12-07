@@ -1,10 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EEA95F1D-2D75-41D0-AD17-B1B3EC566003}"
 	ProjectSection(SolutionItems) = preProject
+		AppDiTests\AppDriverFactoryTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs = AppDiTests\AppDriverFactoryTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets

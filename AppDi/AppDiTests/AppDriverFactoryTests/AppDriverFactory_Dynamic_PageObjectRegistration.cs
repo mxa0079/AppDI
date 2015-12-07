@@ -26,8 +26,12 @@
             //Register a Page Object with our app driver
             dynamic driver = SUT.Using<PhantomJSDriver>().Register<ConcretePageObject>().Create();
 
+
+            //Act
+            //Accesing the page we just registered. If this was done correctly, we should be able to access its properties with no issues...
             var pageObjectUrl = driver.Concrete.Url.ToString();
 
+            //Clean up
             driver.WebDriver.Value.Quit();
 
             //Ensure we have access to the dynamic page object we just registered
