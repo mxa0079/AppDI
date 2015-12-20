@@ -65,3 +65,4 @@ Highlights from this example:
 * You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for classes whose only purpose is to expose a set of properties containing page objects.
 
 
+-commit to test build, test, package, and publish automation-
