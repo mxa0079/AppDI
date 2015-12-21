@@ -39,7 +39,7 @@ namespace AppDi
             var classesToRegister = AppDomain.CurrentDomain.GetAssemblies()
                                             .Where(t => t.GetName().Name == topLevelNamespace)
                                             .SelectMany(t => t.GetTypes())
-                                            .Where(t => t.IsClass && t.Namespace == namespaceToLoad);
+                                            .Where(t => t.IsClass && t.Namespace == namespaceToLoad && t.BaseType == typeof(PageObject));
 
 
             //var workingdirectoryQueryResults = Directory.GetFiles(@".\", assumedDLLname);
