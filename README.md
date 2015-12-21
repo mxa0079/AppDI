@@ -64,5 +64,47 @@ Highlights from this example:
 * AppDi allows you to start using Selenium's [PageObject Model] (https://code.google.com/p/selenium/wiki/PageObjects) without any boiler plate code.
 * You are able to dinamically register PageObjects with your App Driver object at creation. Removing the need for classes whose only purpose is to expose a set of properties containing page objects.
 
+New feature in v 0.9.2-BETA.1:
 
--commit to test build, test, package, and publish automation-
+###Namespace based dynamic PageObject registration
+
+Given that you have reference a namespace with clases that derive from PageObject, such as:
+
+
+```csharp
+        namespace VanillaPageObjects
+        {
+                /// <summary>
+                /// A vanilla helper class to enable unit testing.
+                /// </summary>
+                public class ConcretePageObject : PageObject
+                {
+                        
+                }
+
+                 /// <summary>
+                /// A vanilla helper class to enable unit testing.
+                /// </summary>
+                public class VanillaPageObject : PageObject
+                {
+
+                }
+        }
+```
+
+You can then register all PageObject under that namespace at once:
+
+```csharp
+        //Note that I am explicitly loading the namespace that I am about to register
+        using VanillaPageObjects;
+        
+        public void Ignores_Classes_That_Do_Not_Have_PageObject_suffix()
+        {
+                //We are passing a string of the namespace containing the PageObjects we want to use. 
+                //Only classes that directly derive from PageObject will be registered.
+                dynamic driver = SUT.Using<PhantomJSDriver>().Register("VanillaPageObjects").Create();
+
+                //The created AppDriver has two Page Objects registered (Concrete, and Vanilla)
+                Assert.Equal(2, driver.PageObjectsCount);
+        }
+```
