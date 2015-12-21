@@ -9,6 +9,8 @@ using Xunit.Sdk;
 
 namespace AppDiTests
 {
+    using AppDiTests.VanillaPageObjects;
+
     /// <summary>
     /// Holds all the tests related to WebDriver configuration
     /// </summary>
