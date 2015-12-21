@@ -72,5 +72,15 @@ namespace AppDi
 
             return base.TrySetMember(binder, value);
         }
+
+        /// <summary>
+        /// Returns the count of PageObject types that have been DYNAMICALLY registed with the current AppDriver object
+        /// </summary>
+        public int PageObjectsCount
+        {
+            get {
+                return _pageObjects.Count;
+            }
+        }
     }
 }

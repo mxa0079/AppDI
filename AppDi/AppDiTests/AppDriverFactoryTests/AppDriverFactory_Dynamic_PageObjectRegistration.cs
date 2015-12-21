@@ -4,7 +4,7 @@
     using OpenQA.Selenium.PhantomJS;
     using Xunit;
     using VanillaPageObjects;
-
+    using Microsoft.CSharp.RuntimeBinder;
     public class AppDriverFactory_Dynamic_PageObjectRegistration
     {
         private AppDriverFactory SUT;
@@ -61,6 +61,31 @@
             //And that it was created as expected
             Assert.Equal(EXPECTED_CONFIG_URL, concretePageObjectUrl);
             Assert.Equal(EXPECTED_CONFIG_URL, vanillaPageObjectUrl);
+
+        }
+
+        [Fact]
+        [Trait("SUT", "AppDriverFactory")]
+        [Trait("Area", "Dynamic Registration")]
+        public void Ignores_Classes_That_Do_Not_Have_PageObject_suffix()
+        {
+            //This is the URL configured on appdi.config.json and hence it should be the URL value of our Concrete page object
+            //See test "Creates_AppDriver_taking_defaults_from_JSON_config()" for details
+            const string EXPECTED_CONFIG_URL = @"http://www.google.com/";
+
+            //the method under test is Register(string namespace). Action happens here
+            dynamic driver = SUT.Using<PhantomJSDriver>().Register("AppDiTests.VanillaPageObjects").Create();
+
+
+            Assert.Throws<RuntimeBinderException>(()=> driver.NotA.Url.ToString());
+
+            Assert.Equal(2, driver.PageObjectsCount);
+
+            driver.WebDriver.Value.Quit();
+
+            //Ensure we have access to the dynamic page object we just registered
+            //And that it was created as expected
+            //Assert.Equal(EXPECTED_CONFIG_URL, s);
 
         }
 

@@ -17,4 +17,10 @@ namespace AppDiTests.VanillaPageObjects
     {
 
     }
+
+    /// <summary>
+    /// A class that should never be registered dinamically as a page object
+    /// </summary>
+    public class NotAPageObject{
+    }
 }
