@@ -66,9 +66,9 @@ Highlights from this example:
 
 New feature in v 0.9.2-BETA.1:
 
-###Namespace based dynamic PageObject registration
+###Registering multiple PageObjects at once via their namespace (dynamic registration):
 
-Given that you have referenced/loaded a namespace containing clases that derive from PageObject, such as:
+Given that you have a namespace containing clases that derive from PageObject:
 
 
 ```csharp
@@ -92,7 +92,7 @@ Given that you have referenced/loaded a namespace containing clases that derive 
         }
 ```
 
-You can then register all PageObject under that namespace at once:
+You can then register all PageObject under that namespace at once using its name as a parameter to the Reigster method:
 
 ```csharp
         //Note that I am explicitly loading the namespace that I am about to register
