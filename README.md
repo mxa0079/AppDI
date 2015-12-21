@@ -68,7 +68,7 @@ New feature in v 0.9.2-BETA.1:
 
 ###Namespace based dynamic PageObject registration
 
-Given that you have reference a namespace with clases that derive from PageObject, such as:
+Given that you have referenced/loaded a namespace containing clases that derive from PageObject, such as:
 
 
 ```csharp
