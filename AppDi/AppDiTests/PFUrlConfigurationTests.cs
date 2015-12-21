@@ -4,6 +4,9 @@ using Xunit;
 
 namespace AppDiTests
 {
+
+    using AppDiTests.VanillaPageObjects;
+
     /// <summary>
     /// Holds all tests related to base url configuration
     /// </summary>

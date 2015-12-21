@@ -11,6 +11,8 @@ using OpenQA.Selenium.Edge;
 using System.Reflection;
 using System.Dynamic;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 namespace AppDi    
 {
@@ -25,6 +27,32 @@ namespace AppDi
         {
             var pageType = typeof(T);
             _pages.Add(cleanPageObjectsuffix(pageType.Name), pageType);
+            return this;
+        }
+
+        public AppDriverFactory Register(string namespaceToLoad)
+        {
+            //If the desired namsepace to load is MyNameSpace.Pagebjects, then we assume the existance of a MyNameSpace.dll in the working folder
+            //Generating name of assumed dll file:
+            var topLevelNamespace = namespaceToLoad.Split('.')[0];
+
+            var classesToRegister = AppDomain.CurrentDomain.GetAssemblies()
+                                            .Where(t => t.GetName().Name == topLevelNamespace)
+                                            .SelectMany(t => t.GetTypes())
+                                            .Where(t => t.IsClass && t.Namespace == namespaceToLoad);
+
+
+            //var workingdirectoryQueryResults = Directory.GetFiles(@".\", assumedDLLname);
+            if (classesToRegister.Count() == 0)
+            {
+                throw new Exception("Error: could not find any Page Objects to register on namespace: " + namespaceToLoad + " AppDi looked through the loaded assemblies, assumed the assembly name to be " + topLevelNamespace + " However, either the namespace was not found or no classes were found within that namespace");
+            };
+
+            foreach(var pageObject in classesToRegister)
+            {
+                _pages.Add(cleanPageObjectsuffix(pageObject.Name), pageObject);
+            }
+
             return this;
         }
 

@@ -94,7 +94,7 @@
     <Compile Include="AppDriverFactoryTests\AppDriverFactory_Dynamic_PageObjectRegistration.cs" />
     <Compile Include="AppDriverFactoryTests\AppDriverFactoryConfiguration.cs" />
     <Compile Include="AcceptanceTests\AppDriverTests.cs" />
-    <Compile Include="ConcretePageObject.cs" />
+    <Compile Include="VanillaPageObjects\ConcretePageObject.cs" />
     <Compile Include="PFUrlConfigurationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PFWebDriverConfigurationTests.cs" />
