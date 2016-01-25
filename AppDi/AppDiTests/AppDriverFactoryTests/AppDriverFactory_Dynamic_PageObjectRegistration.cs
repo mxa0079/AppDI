@@ -37,7 +37,7 @@
             //Ensure we have access to the dynamic page object we just registered
             //And that it was created as expected
             Assert.Equal(EXPECTED_CONFIG_URL, pageObjectUrl);
-
+            Assert.NotNull(driver.Concrete.Wait);
         }
 
         [Fact]

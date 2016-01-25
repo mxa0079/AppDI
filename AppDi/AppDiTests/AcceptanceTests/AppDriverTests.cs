@@ -38,6 +38,7 @@ namespace AppDiTests.AppDriverTests
 
 
         //Simple case using the framework end to end
+        //Requires internet access to pass
         [Fact]
         [Trait("SUT", "AppDriver")]
         [Trait("Type", "UAT")]

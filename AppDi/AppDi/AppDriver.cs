@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -53,9 +54,12 @@ namespace AppDi
 
             if (isPageRegistered)
             {
+                //this needs to be extracted out into it's own method that can be replaced by users if desired
                 var createdPage = (PageObject)Activator.CreateInstance(pageType);
                 createdPage.WebDriver = this.WebDriver.Value;
                 createdPage.Url = this.BaseUrl;
+                //TO DO: Make wait timeout configurable
+                createdPage.Wait = new WebDriverWait(this.WebDriver.Value, new TimeSpan(0,0,10));
                 PageFactory.InitElements(this.WebDriver.Value, createdPage);
                 result = createdPage;
                 return isPageRegistered;
