@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>AppDi</id>
-    <version>0.9.2-Beta-build-$buildNumber$</version>
+    <version>0.9.2-Beta-$buildNumber$</version>
     <title>AppDi</title>
     <authors>Mauricio Aviles</authors>
     <owners>Mauricio Aviles</owners>
