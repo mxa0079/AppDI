@@ -71,7 +71,7 @@ namespace AppDi
         }
 
         private Uri _baseUrl;
-        Lazy<IWebDriver> _webDriver;
+        Lazy<IWebDriver> _webDriver = null;
         Func<Uri, Lazy<IWebDriver>, Dictionary<string, Type>, AppDriver> AppDriverConstructor;
 
         /// <summary>
@@ -119,7 +119,8 @@ namespace AppDi
                     throw new MissingConfigurationException("The App Driver has not been properly configured. Missing BaseUrl. you can configure one by calling the \"Driving()\" method of the AppDriverFactory or by creating an appdi.config.json file at the root of your project.");
                 }
 
-                this._webDriver = new Lazy<IWebDriver>(() => new FirefoxDriver());
+                if(this._webDriver == null)
+                    this._webDriver = new Lazy<IWebDriver>(() => new FirefoxDriver());
             }
 
             //Replace with this: http://stackoverflow.com/questions/515269/factory-pattern-in-c-how-to-ensure-an-object-instance-can-only-be-created-by-a
