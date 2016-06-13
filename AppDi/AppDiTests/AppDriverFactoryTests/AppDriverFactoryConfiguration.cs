@@ -1,4 +1,8 @@
-﻿namespace AppDiTests.AppDriverFactoryTests
+﻿using AppDiTests.VanillaPageObjects;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+
+namespace AppDiTests.AppDriverFactoryTests
 {
     using Microsoft.QualityTools.Testing.Fakes;
     using OpenQA.Selenium.PhantomJS;
@@ -89,18 +93,16 @@
             Assert.Equal(JSON_CONFIG_BASE_URL, result.BaseUrl.ToString());
         }
 
-        //Removed because functionality tested is small, and test is unreliable due to its dependency on a WebDriver other than PhantomJS
+        //TODO: reintroduce this test once we factor out the webdriver creation
         //[Fact]
         //[Trait("SUT", "AppDriverFactory")]
         //public void Gives_Preference_To_Code_Based_WebDriver_Configuration()
         //{
-        //    AppDriver result = SUT.Using<EdgeDriver>().Create();
 
-        //    //To simplify unit test dependencies
-        //    //Instead of asserting for the type of EdgeDriver (which would require creating an instance of an edge driver)
-        //    //I Expect that the DriverServiceNotFOundException to be thrown since I am trying to insta
+        //    AppDriver result = AppDriver.Factory().Driving("http://www.bing.com").Using<PhantomJSDriver>().Register<ConcretePageObject>().Create();
 
-        //    Assert.Throws<OpenQA.Selenium.DriverServiceNotFoundException>(() => result.WebDriver.Value);
+        //    Assert.NotNull(result.WebDriver.Value as PhantomJSDriver);
+
         //}
     }
 }
